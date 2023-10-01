@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.sportaandcharity.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_training"
+            app:destination="@id/nav_training" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.sportaandcharity.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_events"
+        android:name="com.example.sportaandcharity.ui.events.EventsFragment"
+        android:label="@string/menu_events"
+        tools:layout="@layout/fragment_events" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.example.sportaandcharity.ui.jogging.MapsFragment"
+        android:label="Карта пробежки"
+        tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/nav_request"
+        android:name="com.example.sportaandcharity.ui.unusualactivity.NewActivityFragment"
+        android:label="Необычная активность"
+        tools:layout="@layout/fragment_new_activity" />
+    <fragment
+        android:id="@+id/nav_fond"
+        android:name="com.example.sportaandcharity.ui.fond.FondFragment"
+        android:label="Информация о фондах"
+        tools:layout="@layout/fragment_fond" />
+    <fragment
+        android:id="@+id/nav_physdata"
+        android:name="com.example.sportaandcharity.ui.physdata.PhysdataFragment"
+        android:label="Физические данные"
+        tools:layout="@layout/fragment_physdata" />
+    <activity
+        android:id="@+id/nav_scanner"
+        android:name="com.example.sportaandcharity.nfcapp.MActivity"
+        android:label="MActivity" />
+    <fragment
+        android:id="@+id/nav_training"
+        android:name="com.example.sportaandcharity.training.TrainingFragment"
+        android:label="Доступная тренировка"
+        tools:layout="@layout/fragment_training" >
+        <action
+            android:id="@+id/action_nav_training_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+</navigation>

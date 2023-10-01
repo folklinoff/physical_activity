@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_gallery" />
+        <item
+            android:id="@+id/nav_fond"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Информация о фондах" />
+        <item
+            android:id="@+id/nav_events"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_events" />
+
+        <item
+            android:id="@+id/nav_invite"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Приглашения коллег" />
+
+        <item
+            android:id="@+id/nav_request"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Необычная активность" />
+
+        <item
+            android:id="@+id/nav_physdata"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Ваши физданные" />
+        <item
+            android:id="@+id/nav_device"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Привязка умных устройств" />
+
+
+        <item
+            android:id="@+id/nav_scanner"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="QR и NFC сканнер" />
+    </group>
+</menu>

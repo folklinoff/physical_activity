@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="usual_text_color">#F0302723</color>
+    <color name="usual_text_color_two">#D7302A27</color>
+    <color name="cocos_color">#D6612F</color>
+    <color name="cocos_color_trans">#7ED6612F</color>
+    <color name="cocos_color_dark">#FB5F1D</color>
+    <color name="charity_color">#1D8C1D</color>
+    <color name="charity_color_trans">#AE1D8C1D</color>
+    <color name="charity_color_dark">#B5155C15</color>
+    <color name="charity_color_light">#35ED35</color>
+    <color name="simple_color_light">#97A59688</color>
+    <color name="request_color_trans">#7EC6B622</color>
+    <color name="request_color_trans_dark">#A6D1801D</color>
+</resources>
