@@ -1,0 +1,992 @@
+basePath: /
+definitions:
+  handlers.Criterias:
+    properties:
+      activity_types:
+        items:
+          type: string
+        type: array
+      daytime:
+        items:
+          type: string
+        type: array
+      departments:
+        items:
+          type: string
+        type: array
+      employee_ids:
+        items:
+          type: integer
+        type: array
+      goals:
+        items:
+          type: string
+        type: array
+      orgs:
+        items:
+          type: string
+        type: array
+      period:
+        items:
+          type: string
+        type: array
+    type: object
+  handlers.JSONResult:
+    type: object
+  handlers.msg:
+    properties:
+      message:
+        type: string
+    type: object
+  model.ActivityRequest:
+    properties:
+      hours:
+        type: integer
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  model.ActivityType:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      points:
+        type: integer
+      weight:
+        type: integer
+    type: object
+  model.Award:
+    properties:
+      date:
+        type: string
+      employee_id:
+        type: integer
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  model.Employee:
+    properties:
+      awards:
+        items:
+          $ref: '#/definitions/model.Award'
+        type: array
+      balance:
+        type: integer
+      customActivities:
+        items:
+          $ref: '#/definitions/model.ActivityType'
+        type: array
+      department:
+        type: string
+      events:
+        items:
+          $ref: '#/definitions/model.Event'
+        type: array
+      fund_id:
+        type: integer
+      goal_id:
+        type: integer
+      height:
+        type: integer
+      id:
+        type: integer
+      joggings:
+        items:
+          $ref: '#/definitions/model.Jogging'
+        type: array
+      name:
+        type: string
+      password:
+        type: string
+      patronymic:
+        type: string
+      phone_number:
+        type: string
+      position:
+        type: string
+      surname:
+        type: string
+      total_points:
+        type: integer
+      trainings:
+        items:
+          $ref: '#/definitions/model.Training'
+        type: array
+      walks:
+        items:
+          $ref: '#/definitions/model.Walk'
+        type: array
+      weight:
+        type: integer
+    type: object
+  model.Event:
+    properties:
+      employee_id:
+        type: integer
+      end_date:
+        type: string
+      host_id:
+        type: integer
+      id:
+        type: integer
+      name:
+        type: string
+      prize:
+        type: integer
+      start_date:
+        type: string
+      winner_id:
+        type: integer
+    type: object
+  model.Fund:
+    properties:
+      foundation_date:
+        type: string
+      founder_name:
+        type: string
+      goals:
+        items:
+          $ref: '#/definitions/model.Goal'
+        type: array
+      id:
+        type: integer
+      name:
+        type: string
+      password:
+        type: string
+      points:
+        type: integer
+    type: object
+  model.Goal:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      points:
+        type: integer
+    type: object
+  model.Jogging:
+    properties:
+      date:
+        type: string
+      duration:
+        type: string
+      employee_id:
+        type: integer
+      id:
+        type: integer
+      path:
+        type: string
+      price:
+        type: string
+      prize_type:
+        type: string
+    type: object
+  model.Principal:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      password:
+        type: string
+    type: object
+  model.Training:
+    properties:
+      date:
+        type: string
+      employee_id:
+        type: integer
+      id:
+        type: integer
+    type: object
+  model.Walk:
+    properties:
+      date:
+        type: string
+      duration:
+        type: string
+      employee_id:
+        type: integer
+      id:
+        type: integer
+      path:
+        type: string
+      price:
+        type: string
+      prize_type:
+        type: string
+    type: object
+host: 188.72.77.222:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: Реализованный в рамках хакатона сервер для корпоративной системы благотворительности
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: АПИ сервера для корпоративной системы благотворительности
+  version: "1.0"
+paths:
+  /ActivityRequest/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete item
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Delete item
+  /activity:
+    get:
+      consumes:
+      - application/json
+      description: Get all items
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handlers.JSONResult'
+            - properties:
+                activities:
+                  items: {}
+                  type: array
+              type: object
+      summary: Get all items
+    post:
+      consumes:
+      - application/json
+      description: Add item
+      parameters:
+      - description: data
+        in: body
+        name: role
+        required: true
+        schema: {}
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema: {}
+      summary: Add item
+  /activity/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete item
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Delete item
+    get:
+      consumes:
+      - application/json
+      description: Get one item
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema: {}
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Get one item
+    put:
+      consumes:
+      - application/json
+      description: Update item
+      parameters:
+      - description: data
+        in: body
+        name: role
+        required: true
+        schema: {}
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema: {}
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Update item
+  /activity_request:
+    get:
+      consumes:
+      - application/json
+      description: Get all items
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handlers.JSONResult'
+            - properties:
+                activities:
+                  items:
+                    $ref: '#/definitions/model.ActivityRequest'
+                  type: array
+              type: object
+      summary: Get all items
+    post:
+      consumes:
+      - application/json
+      description: Add item
+      parameters:
+      - description: data
+        in: body
+        name: role
+        required: true
+        schema:
+          $ref: '#/definitions/model.ActivityRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.ActivityRequest'
+      summary: Add item
+  /activity_request/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get one item
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.ActivityRequest'
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Get one item
+    put:
+      consumes:
+      - application/json
+      description: Update item
+      parameters:
+      - description: data
+        in: body
+        name: role
+        required: true
+        schema:
+          $ref: '#/definitions/model.ActivityRequest'
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.ActivityRequest'
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Update item
+  /admin:
+    post:
+      consumes:
+      - application/json
+      description: Get one item
+      parameters:
+      - description: Principal
+        in: body
+        name: role
+        required: true
+        schema:
+          $ref: '#/definitions/model.Principal'
+      produces:
+      - application/json
+      responses:
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Получение статистики
+      tags:
+      - stats
+  /admin/login:
+    post:
+      consumes:
+      - application/json
+      description: Get one item
+      parameters:
+      - description: Pricipal
+        in: body
+        name: principal
+        required: true
+        schema:
+          $ref: '#/definitions/model.Principal'
+      produces:
+      - application/json
+      responses:
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Получение статистики
+      tags:
+      - stats
+  /employee:
+    get:
+      consumes:
+      - application/json
+      description: Получить список всех сотрудников
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handlers.JSONResult'
+            - properties:
+                employees:
+                  items:
+                    $ref: '#/definitions/model.Employee'
+                  type: array
+              type: object
+      summary: Получить список всех сотрудников
+      tags:
+      - Employees
+    post:
+      consumes:
+      - application/json
+      description: Регистрация сотрудника в системе
+      parameters:
+      - description: data
+        in: body
+        name: role
+        required: true
+        schema:
+          $ref: '#/definitions/model.Employee'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Employee'
+      summary: Регистрация сотрудника в системе
+      tags:
+      - Employees
+  /employee/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Получить информацию о сотруднике
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Employee'
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Получить информацию о сотруднике
+      tags:
+      - Employees
+    put:
+      consumes:
+      - application/json
+      description: Обновление информации о сотруднике в системе
+      parameters:
+      - description: data
+        in: body
+        name: role
+        required: true
+        schema:
+          $ref: '#/definitions/model.Employee'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Employee'
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Обновление информации о сотруднике в системе
+      tags:
+      - Employees
+  /employee/{id}/activity:
+    post:
+      consumes:
+      - application/json
+      description: Delete item
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Уведомление об активности
+      tags:
+      - Employees
+  /employee/{id}/path:
+    post:
+      consumes:
+      - application/json
+      description: Delete item
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Уведомление об активности
+      tags:
+      - Employees
+  /employee/data:
+    get:
+      consumes:
+      - application/json
+      description: Получить информацию о сотруднике
+      parameters:
+      - description: token
+        in: path
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Employee'
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Получить информацию о сотруднике
+      tags:
+      - Employees
+  /employee/login:
+    post:
+      consumes:
+      - application/json
+      description: Delete item
+      parameters:
+      - description: data
+        in: body
+        name: role
+        required: true
+        schema:
+          $ref: '#/definitions/model.Employee'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handlers.JSONResult'
+            - properties:
+                message:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handlers.JSONResult'
+            - properties:
+                error:
+                  type: string
+              type: object
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Аутентификация сотрудника
+      tags:
+      - Employees
+  /employee/points:
+    put:
+      consumes:
+      - application/json
+      description: Delete item
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Выбор направления для пожертвований
+      tags:
+      - Employees
+  /funds:
+    get:
+      consumes:
+      - application/json
+      description: Получение списка всех фондов в кратком формате
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handlers.JSONResult'
+            - properties:
+                funds:
+                  items:
+                    $ref: '#/definitions/model.Fund'
+                  type: array
+              type: object
+      summary: Получение списка всех фондов
+      tags:
+      - Fund
+    post:
+      consumes:
+      - application/json
+      description: Создание нового фонда (осуществляется самими фондами)
+      parameters:
+      - description: Fund model
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/model.Fund'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.msg'
+      summary: Создание фонда
+      tags:
+      - Fund
+    put:
+      consumes:
+      - application/json
+      description: Создание нового фонда (осуществляется самими фондами)
+      parameters:
+      - description: Fund model
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/model.Fund'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.msg'
+      summary: Создание фонда
+      tags:
+      - Fund
+  /funds/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Получение полной информации о фонде
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Fund'
+      summary: Получение информации о фонде
+      tags:
+      - Fund
+  /funds/data:
+    get:
+      consumes:
+      - application/json
+      description: Получение полной информации о фонде
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Fund'
+      summary: Получение информации о фонде
+      tags:
+      - Fund
+  /funds/login:
+    post:
+      consumes:
+      - application/json
+      description: Создание нового фонда (осуществляется самими фондами)
+      parameters:
+      - description: Fund model
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/model.Fund'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.msg'
+      summary: Создание фонда
+      tags:
+      - Fund
+  /healthcheck:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.msg'
+      summary: Healthcheck
+      tags:
+      - Healthcheck
+  /leaderboard:
+    get:
+      consumes:
+      - application/json
+      description: Delete item
+      parameters:
+      - description: criteria
+        in: query
+        name: criteria
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Вывод десяти лучших сотрудников
+      tags:
+      - Employees
+  /stats:
+    get:
+      consumes:
+      - application/json
+      description: Get one item
+      parameters:
+      - description: Principal
+        in: body
+        name: role
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.Criterias'
+      produces:
+      - application/json
+      responses:
+        "400":
+          description: 400 StatusBadRequest
+          schema:
+            type: string
+        "404":
+          description: 404 not found
+          schema:
+            type: string
+      summary: Получение статистики
+      tags:
+      - stats
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+  BasicAuth:
+    type: basic
+  OAuth2Application:
+    flow: application
+    scopes:
+      admin: ' Grants read and write access to administrative information'
+      write: ' Grants write access'
+    tokenUrl: https://example.com/oauth/token
+    type: oauth2
+swagger: "2.0"

@@ -1,19 +1,29 @@
 version: "3.7"
 services:
+  database:
+    image: postgres
+    container_name: db
+    restart: always
+    hostname: ${POSTGRES_HOST}
+    network_mode: my_bridge
+    # networks:
+    #   - my_bridge
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT}:5432"
   server:
-    image: refuel
-    container_name: citycard-server
+    image: charity
+    container_name: charity
     build:
       context: .
       dockerfile: ./Dockerfile
     env_file: .env
     restart: always
-    networks:
-      - new
+    network_mode: my_bridge
+    # networks:
+    #   - my_bridge
     environment:
       - POSTGRES_DSN=${DATABASE_URL}
     ports:
-    - "8080:${PORT}"
-
-networks:
-  new:
+    - "8080:8080"

@@ -6,8 +6,7 @@ COPY . ./
 RUN GOOS=linux go build -o ./build .
 
 FROM ubuntu
-ADD ./internal/adapters/db/postgres/migrations /migrations
-COPY --from=builder /app/build /home/citycard/app
-ADD ./docs /home/citycard/docs
+COPY --from=builder /app/build /home/charity/app
+ADD ./.aws /root/.aws
 EXPOSE 8080 8080
-CMD ["./home/citycard/app"]
+CMD ["./home/charity/app"]
