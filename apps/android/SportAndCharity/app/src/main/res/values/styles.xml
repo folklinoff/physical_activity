@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="UsualText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/usual_text_color</item>
+        <item name="android:textSize">35sp</item>
+        <item name="android:lineSpacingExtra">-7sp</item>
+    </style>
+
+    <style name="HomeTableLayoutText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/usual_text_color</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingExtra">-7sp</item>
+    </style>
+
+</resources>

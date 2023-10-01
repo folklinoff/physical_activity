@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Sport And Charity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Каримова Лейла Рустамовна</string>
+    <string name="nav_header_subtitle">Стажер подразделения разработки</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Помощь</string>
+
+    <string name="menu_home">Домашняя</string>
+    <string name="menu_gallery">Информация о партнерах</string>
+    <string name="menu_events">Мероприятия</string>
+    <string name="tv_steps">34 место</string>
+    <string name="bt_jogging">Сделать пробежку</string>
+    <string name="bt_training">Выложиться на тренировке</string>
+    <string name="bt_event">Создать мероприятие</string>
+    <string name="bt_invite">Пригласить на пробежку</string>
+    <string name="tv_balance">3648 баллов</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

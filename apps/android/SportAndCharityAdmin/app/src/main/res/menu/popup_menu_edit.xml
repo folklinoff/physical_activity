@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/plus100"
+        android:title="+100"/>
+    <item
+        android:id="@+id/plus1000"
+        android:title="+1000"/>
+    <item
+        android:id="@+id/plus10000"
+        android:title="+10000"/>
+    <item
+        android:id="@+id/minus100"
+        android:title="-100"/>
+    <item
+        android:id="@+id/minus1000"
+        android:title="-1000"/>
+    <item
+        android:id="@+id/minus10000"
+        android:title="-10000"/>
+</menu>
